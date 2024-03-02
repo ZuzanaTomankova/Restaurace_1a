@@ -1,7 +1,6 @@
 package com.engeto.ja.Restaurant;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Orders {
@@ -73,11 +72,22 @@ public class Orders {
     public void setItPaid(Boolean itPaid) {
         isItPaid = itPaid;
     }
+
+    public Boolean getItDelivered() {
+        return isItDelivered;
+    }
+
+    public void setItDelivered(Boolean itDelivered) {
+        isItDelivered = itDelivered;
+    }
+
     public BigDecimal getPartialPrice(){
         BigDecimal partialPrice = dish.getPrice().multiply(BigDecimal.valueOf(getAmount()));
         return partialPrice;
 
+
     }
+
 
 
 
@@ -95,4 +105,6 @@ public class Orders {
                 ", isItPaid=" + isItPaid +
                 ", partialPrice"+getPartialPrice()+"\n";
     }
+
+
 }

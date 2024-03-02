@@ -49,7 +49,7 @@ public class Dish {
     public void setPreparationTime(int preparationTime)
          throws Exception
         {
-            if (preparationTime<0) {
+            if (preparationTime<=0) {
                 throw new Exception("Preparation time must be greater than zero.Given time: "
                         + preparationTime);
 
