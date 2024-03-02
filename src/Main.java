@@ -6,6 +6,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.engeto.ja.Restaurant.RestaurantManager.*;
+
 public class Main {
     public static void main(String[] args)  {
 
@@ -36,11 +38,15 @@ public class Main {
         ordersList.add(new Orders(15, dish1, 2, LocalTime.of( 8, 45), LocalTime.of( 9, 0), false, false));
         ordersList.add(new Orders(15, dish2, 2, LocalTime.of( 8, 45), LocalTime.of(9, 0), false, false));
         ordersList.add(new Orders(15, dish4, 2, LocalTime.of(8, 45), LocalTime.of( 9, 0), true, false));
-        ordersList.add(new Orders(2, dish3, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
-        ordersList.add(new Orders(2, dish2, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
-        ordersList.add(new Orders(2, dish4, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
+        ordersList.add(new Orders(2, dish3, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
+        ordersList.add(new Orders(2, dish2, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
+        ordersList.add(new Orders(2, dish4, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
         System.out.println(ordersList);
 
+        notDelivered(ordersList);
+        notPaid(ordersList);
+        sortedBasedOnTime (ordersList);
+        System.out.println("Průměrná doba spracování objednávek: "+getAverageTime());
 
 
 

@@ -8,21 +8,21 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RestaurantManager {
-    private List<Orders>ordersList= new ArrayList<>();
 
-    public void notDelivered (List<Orders>ordersList) {
+
+    public static void notDelivered (List<Orders>ordersList) {
         for (Orders orders : ordersList) {
             if (!orders.getItDelivered())
-            { System.out.println("Nedodáno: " + orders.getTableNumber());
+            { System.out.println("Nedodáno: " + orders.getTableNumber()+" "+orders.getDish().getTitle());
 
             }
         }
 
     }
-    public void notPaid (List<Orders>ordersList) {
+    public static void notPaid (List<Orders>ordersList) {
         for (Orders orders : ordersList) {
             if (!orders.getItPaid())
-            { System.out.println("Nezaplaceno: " + orders.getTableNumber());
+            { System.out.println("Nezaplaceno: " + orders.getTableNumber()+" "+orders.getDish().getTitle());
 
             }
         }
@@ -31,21 +31,44 @@ public class RestaurantManager {
 
 
 
-     public void sortedBasedOnTime (List<Orders>ordersList){
+     public static void sortedBasedOnTime (List<Orders>ordersList){
          Collections.sort(ordersList, Comparator.comparing(Orders::getOrderedTime));
          System.out.println("Setříděno podle času objednávky: "+ordersList);
      }
 
-    public long getAverageTime( List<Orders>ordersList) {
+    public static long getTotalTime( List<Orders>ordersList) {
+        long totalTime = 0;
         for (Orders orders : ordersList) {
             long minutesBetween = 0;
             if (orders.getItPaid()) {
                 minutesBetween = ChronoUnit.MINUTES.between(orders.getOrderedTime(), orders.getFulfilmentTime());
-                long averageTime = minutesBetween / ordersList.size();
+                totalTime = +minutesBetween;
+
             }
 
-        }   return getAverageTime(ordersList);
+        }
+        return totalTime;
     }
+
+    public static long getTotalListSize( List<Orders>ordersList) {
+        List<Orders> totalList = new ArrayList<>();
+        long listSize = 0;
+        for (Orders orders : ordersList) {
+            if (orders.getItPaid()) {
+                totalList.add(orders);
+            }
+            listSize = totalList.size();
+        }
+        return listSize;
+
+    }
+
+    public static long getAverageTime(){
+        long averageTime = totalTime/listSize;
+        return averageTime;
+    }
+
+
     public void listOfOrderedDish (List<Orders>ordersList){
         for (Orders orders : ordersList) {
         System.out.println("Seznam objednaných jídel: "+orders.getDish().getTitle());
