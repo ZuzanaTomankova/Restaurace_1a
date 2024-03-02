@@ -1,8 +1,10 @@
 import com.engeto.ja.Restaurant.Dish;
 import com.engeto.ja.Restaurant.Orders;
+import org.w3c.dom.ls.LSOutput;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,18 +35,19 @@ public class Main {
 
 
         List<Orders> ordersList = new ArrayList<>();
-        ordersList.add(new Orders(15, dish1, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), false, false));
-        ordersList.add(new Orders(15, dish2, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), false, false));
-        ordersList.add(new Orders(15, dish4, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), true, false));
-        ordersList.add(new Orders(2, dish3, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), false, false));
-        ordersList.add(new Orders(2, dish2, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), false, false));
-        ordersList.add(new Orders(2, dish4, 2, LocalDateTime.of(2024, 3, 3, 8, 45, 0), LocalDateTime.of(2024, 3, 3, 9, 0, 0), false, false));
+        ordersList.add(new Orders(15, dish1, 2, LocalTime.of( 8, 45), LocalTime.of( 9, 0), false, false));
+        ordersList.add(new Orders(15, dish2, 2, LocalTime.of( 8, 45), LocalTime.of(9, 0), false, false));
+        ordersList.add(new Orders(15, dish4, 2, LocalTime.of(8, 45), LocalTime.of( 9, 0), true, false));
+        ordersList.add(new Orders(2, dish3, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
+        ordersList.add(new Orders(2, dish2, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
+        ordersList.add(new Orders(2, dish4, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), false, false));
         System.out.println(ordersList);
-
-
 
 
 
     }
 
-}
+
+
+    }
+

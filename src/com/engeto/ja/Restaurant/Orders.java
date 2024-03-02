@@ -2,18 +2,19 @@ package com.engeto.ja.Restaurant;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Orders {
     private int tableNumber;
     private Dish dish;
 
     private int amount;
-    private LocalDateTime orderedTime;
-    private LocalDateTime fulfilmentTime;
+    private LocalTime orderedTime;
+    private LocalTime fulfilmentTime;
     private Boolean isItDelivered;
     private Boolean isItPaid;
 
-    public Orders(int tableNumber, Dish dish, int amount, LocalDateTime orderedTime, LocalDateTime fulfilmentTime,Boolean isItDelivered, Boolean isItPaid) {
+    public Orders(int tableNumber, Dish dish, int amount, LocalTime orderedTime, LocalTime fulfilmentTime,Boolean isItDelivered, Boolean isItPaid) {
         this.tableNumber = tableNumber;
         this.dish = dish;
         this.amount = amount;
@@ -49,19 +50,19 @@ public class Orders {
         this.amount = amount;
     }
 
-    public LocalDateTime getOrderedTime() {
+    public LocalTime getOrderedTime() {
         return orderedTime;
     }
 
-    public void setOrderedTime(LocalDateTime orderedTime) {
+    public void setOrderedTime(LocalTime orderedTime) {
         this.orderedTime = orderedTime;
     }
 
-    public LocalDateTime getFulfilmentTime() {
+    public LocalTime getFulfilmentTime() {
         return fulfilmentTime;
     }
 
-    public void setFulfilmentTime(LocalDateTime fulfilmentTime) {
+    public void setFulfilmentTime(LocalTime fulfilmentTime) {
         this.fulfilmentTime = fulfilmentTime;
     }
 
@@ -90,6 +91,7 @@ public class Orders {
                 ", amount=" + amount +
                 ", orderedTime=" + orderedTime +
                 ", fulfilmentTime=" + fulfilmentTime +
+                ", isItDelivered=" + isItDelivered+
                 ", isItPaid=" + isItPaid +
                 ", partialPrice"+getPartialPrice()+"\n";
     }
