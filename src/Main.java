@@ -45,10 +45,11 @@ public class Main {
 
         notDelivered(ordersList);
         notPaid(ordersList);
+        getAverageTime(ordersList);
         sortedBasedOnTime (ordersList);
         listOfOrderedDish(ordersList);
         exportOfOrders(ordersList,15);
-        getTotalPriceForTable(ordersList,2);
+        getTotalPriceForTable(ordersList,15);
 
 
 
