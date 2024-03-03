@@ -10,7 +10,7 @@ import java.util.List;
 public class RestaurantManager {
 
 
-    public static void notDelivered (List<Orders>ordersList) {
+    public void notDelivered (List<Orders>ordersList) {
         for (Orders orders : ordersList) {
             if (!orders.getItDelivered())
             { System.out.println("Nedodáno: " + orders.getTableNumber()+" "+orders.getDish().getTitle());
@@ -19,7 +19,7 @@ public class RestaurantManager {
         }
         System.out.println("\n");
     }
-    public static void notPaid (List<Orders>ordersList) {
+    public void notPaid (List<Orders>ordersList) {
         for (Orders orders : ordersList) {
             if (!orders.getItPaid())
             { System.out.println("Nezaplaceno: " + orders.getTableNumber()+" "+orders.getDish().getTitle());
@@ -31,7 +31,7 @@ public class RestaurantManager {
 
 
 
-     public static void sortedBasedOnTime (List<Orders>ordersList){
+     public void sortedBasedOnTime (List<Orders>ordersList){
          Collections.sort(ordersList, Comparator.comparing(Orders::getOrderedTime));
          System.out.println("Setříděno podle času objednávky: \n"+ordersList);
      }
@@ -63,7 +63,7 @@ public class RestaurantManager {
 //
 //    }
 //
-    public static void getAverageTime(List<Orders>ordersList){
+    public void getAverageTime(List<Orders>ordersList){
    long totalTime=0;
    long listSize;
    long minutesBetween;
@@ -71,7 +71,7 @@ public class RestaurantManager {
         for (Orders orders : ordersList) {
             if (orders.getItDelivered()==true) {
                minutesBetween = ChronoUnit.MINUTES.between(orders.getOrderedTime(), orders.getFulfilmentTime());
-                totalTime +=minutesBetween;
+                totalTime =totalTime+minutesBetween;
                     totalList.add(orders);
 
             }
@@ -80,31 +80,31 @@ public class RestaurantManager {
         listSize = totalList.size();
         long averageTime;
         averageTime = listSize / totalTime;
-        System.out.println("Prúměrná doba zpracování objednávky je:"+averageTime+" minut\n");
+        System.out.println("Prúměrná doba zpracování objednávky je "+averageTime+" minut\n");
     }
 
 
-    public static void listOfOrderedDish (List<Orders>ordersList){
+    public void listOfOrderedDish (List<Orders>ordersList){
         System.out.println("Seznam objednaných jídel: ");
         for (Orders orders : ordersList) {
         System.out.println(orders.getDish().getTitle());
     }
         System.out.println("\n");
     }
-    public static String isPaidString (List<Orders>ordersList) {
+    public String isPaidString (List<Orders>ordersList) {
         String paidString = null;
         for (Orders orders : ordersList) {
-            paidString = "";
 
-            if (orders.getItPaid()) {
+            if (orders.getItPaid()==true) {
                 paidString = "Zaplaceno";
             }
-
-        }
-        return paidString;
+            else {
+                paidString="";
+            }
+        }return paidString;
     }
 
-        public static void exportOfOrders (List < Orders > ordersList,int table) {
+        public void exportOfOrders (List < Orders > ordersList,int table) {
         for (Orders orders:ordersList)
                 if (orders.getTableNumber() == table) {
 
@@ -117,7 +117,7 @@ public class RestaurantManager {
 
         }
 
-    public static void getTotalPriceForTable(List < Orders > ordersList,int table) {
+    public void getTotalPriceForTable(List < Orders > ordersList,int table) {
         BigDecimal totalPrice = null;
         for (Orders orders : ordersList) {
             if (orders.getTableNumber() == table) {

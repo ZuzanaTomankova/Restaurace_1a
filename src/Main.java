@@ -1,12 +1,11 @@
 import com.engeto.ja.Restaurant.Dish;
 import com.engeto.ja.Restaurant.Orders;
+import com.engeto.ja.Restaurant.RestaurantManager;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.engeto.ja.Restaurant.RestaurantManager.*;
 
 public class Main {
     public static void main(String[] args)  {
@@ -43,13 +42,14 @@ public class Main {
         ordersList.add(new Orders(2, dish4, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
         System.out.println(ordersList);
 
-        notDelivered(ordersList);
-        notPaid(ordersList);
-        getAverageTime(ordersList);
-        sortedBasedOnTime (ordersList);
-        listOfOrderedDish(ordersList);
-        exportOfOrders(ordersList,15);
-        getTotalPriceForTable(ordersList,15);
+        RestaurantManager restaurantManager = new RestaurantManager();
+        restaurantManager.notDelivered(ordersList);
+        restaurantManager.notPaid(ordersList);
+        restaurantManager.getAverageTime(ordersList);
+        restaurantManager.sortedBasedOnTime (ordersList);
+        restaurantManager.listOfOrderedDish(ordersList);
+        restaurantManager.exportOfOrders(ordersList,15);
+        restaurantManager.getTotalPriceForTable(ordersList,15);
 
 
 
