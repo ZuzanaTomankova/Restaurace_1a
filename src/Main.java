@@ -46,7 +46,9 @@ public class Main {
         notDelivered(ordersList);
         notPaid(ordersList);
         sortedBasedOnTime (ordersList);
-        System.out.println("Průměrná doba spracování objednávek: "+getAverageTime());
+        listOfOrderedDish(ordersList);
+        exportOfOrders(ordersList,15);
+        getTotalPriceForTable(ordersList,2);
 
 
 
