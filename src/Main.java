@@ -27,7 +27,7 @@ public class Main {
             dishList.add(dish3);
             dishList.add(dish4);
 
-            System.out.println(dishList);
+
         } catch (Exception e) {
             System.err.println("Nastala chyba při zadávání doby přípravy." + e.getLocalizedMessage());
         }
@@ -40,7 +40,7 @@ public class Main {
         ordersList.add(new Orders(2, dish3, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
         ordersList.add(new Orders(2, dish2, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
         ordersList.add(new Orders(2, dish4, 2, LocalTime.of( 9, 45), LocalTime.of(10, 0), true, true));
-        System.out.println(ordersList);
+
 
         RestaurantManager restaurantManager = new RestaurantManager();
         restaurantManager.notDelivered(ordersList);
@@ -49,6 +49,8 @@ public class Main {
         restaurantManager.sortedBasedOnTime (ordersList);
         restaurantManager.listOfOrderedDish(ordersList);
         restaurantManager.exportOfOrders(ordersList,15);
+        restaurantManager.exportOfOrders(ordersList,2);
+
         restaurantManager.getTotalPriceForTable(ordersList,15);
 
 
