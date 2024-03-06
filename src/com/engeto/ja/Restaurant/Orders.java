@@ -89,23 +89,4 @@ public class Orders {
 
     }
 
-
-
-
-
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "tableNumber=" + tableNumber +
-                ", dish=" + dish +
-                ", amount=" + amount +
-                ", orderedTime=" + orderedTime +
-                ", fulfilmentTime=" + fulfilmentTime +
-                ", isItDelivered=" + isItDelivered+
-                ", isItPaid=" + isItPaid +
-                ", partialPrice"+getPartialPrice()+"\n";
-    }
-
-
-}
+   }

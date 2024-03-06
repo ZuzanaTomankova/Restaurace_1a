@@ -39,33 +39,7 @@ public class RestaurantManager {
         System.out.println(orders.getTableNumber() + " " + orders.getDish().getTitle()+" "+orders.getAmount()+"ks");}
     }
 
-    //    public static long getTotalTime( List<Orders>ordersList) {
-//        long totalTime = 0;
-//        for (Orders orders : ordersList) {
-//            long minutesBetween = 0;
-//            if (orders.getItPaid()) {
-//                minutesBetween = ChronoUnit.MINUTES.between(orders.getOrderedTime(), orders.getFulfilmentTime());
-//                totalTime +=minutesBetween;
-//
-//            }
-//
-//        }
-//        return totalTime;
-//    }
-//
-//    public static long getTotalListSize( List<Orders>ordersList) {
-//        List<Orders> totalList = new ArrayList<>();
-//        long listSize = 0;
-//        for (Orders orders : ordersList) {
-//            if (orders.getItPaid()) {
-//                totalList.add(orders);
-//            }
-//            listSize = totalList.size();
-//        }
-//        return listSize;
-//
-//    }
-//
+
     public void getAverageTime(List<Orders> ordersList) {
         long totalTime = 0;
         long listSize=0;
@@ -114,15 +88,12 @@ public class RestaurantManager {
                     System.out.println(orders.getDish().getIdentificationOfDish() + ". " + orders.getDish().getTitle() + " "
                             + orders.getAmount() + " (" + orders.getPartialPrice() + " Kč):  " + orders.getOrderedTime() + "-"
                             + orders.getFulfilmentTime()+" "+ isPaidString(orders));
-                }}
+                }
+        }
 
             System.out.println("\n");
 
         }
-
-
-
-
 
     public void saveDishToFile(List<Dish>dishList,String fileName1) throws RuntimeException {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName1)))) {
@@ -167,16 +138,6 @@ public class RestaurantManager {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
 
     public static void getTotalPriceForTable(List < Orders > ordersList,int table) {
         BigDecimal totalPrice = BigDecimal.valueOf(0);
