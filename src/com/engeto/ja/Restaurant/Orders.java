@@ -10,8 +10,9 @@ public class Orders {
     private int amount;
     private LocalTime orderedTime;
     private LocalTime fulfilmentTime;
-    private Boolean isItDelivered;
-    private Boolean isItPaid;
+  //  private Fill fill;
+    private boolean isItPaid;
+    private boolean isItDelivered;
 
     public Orders(int tableNumber, Dish dish, int amount, LocalTime orderedTime, LocalTime fulfilmentTime,Boolean isItDelivered, Boolean isItPaid) {
         this.tableNumber = tableNumber;

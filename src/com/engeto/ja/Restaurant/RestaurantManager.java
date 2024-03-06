@@ -106,17 +106,26 @@ public class RestaurantManager {
 
 
         public void exportOfOrders (List < Orders > ordersList,int table) {
-        for (Orders orders:ordersList)
+            System.out.println("číslo stolu"+table);
+        for (Orders orders:ordersList){
                 if (orders.getTableNumber() == table) {
 
                     System.out.println(orders.getDish().getIdentificationOfDish() + ". " + orders.getDish().getTitle() + " "
                             + orders.getAmount() + " (" + orders.getPartialPrice() + " Kč):  " + orders.getOrderedTime() + "-"
                             + orders.getFulfilmentTime()+" "+ isPaidString(orders));
-                }
+                }}
 
             System.out.println("\n");
 
         }
+
+
+
+
+
+
+
+
 
     public static void getTotalPriceForTable(List < Orders > ordersList,int table) {
         BigDecimal totalPrice = BigDecimal.valueOf(0);
