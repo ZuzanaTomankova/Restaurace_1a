@@ -1,5 +1,6 @@
 package com.engeto.ja.Restaurant;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -106,7 +107,7 @@ public class RestaurantManager {
 
 
         public void exportOfOrders (List < Orders > ordersList,int table) {
-            System.out.println("číslo stolu"+table);
+            System.out.println("Číslo stolu "+table);
         for (Orders orders:ordersList){
                 if (orders.getTableNumber() == table) {
 
@@ -118,6 +119,56 @@ public class RestaurantManager {
             System.out.println("\n");
 
         }
+
+
+
+
+
+    public void saveDishToFile(List<Dish>dishList,String fileName1) throws RuntimeException {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName1)))) {
+            writer.println("Seznam receptů:");
+            for (Dish dish : dishList) {
+                writer.println(dish.getIdentificationOfDish() + "\t"
+                        + dish.getTitle() + "\t"
+                        +dish.getPrice() + "\t"
+                        + dish.getPreparationTime() + "\t"
+                        + ( dish.getImage()+ "\t"));
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Soubor "+fileName1+" nebyl nalezen!\n"
+                    + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("Chyba výstupu při zápisu do souboru: "+fileName1
+                    +":\n"+ e.getLocalizedMessage());
+        }
+
+    }
+
+    public void saveOrdersToFile(List<Orders>ordersList,String fileName, int table) throws RuntimeException {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            writer.println("Objednávky pro stůl č."+table);
+            for (Orders orders : ordersList) {
+                if (orders.getTableNumber() == table) {
+                    writer.println(orders.getDish().getIdentificationOfDish() + ". " + " "
+                            + orders.getDish().getTitle() + " "
+                            + orders.getAmount() + " ("
+                            + orders.getPartialPrice() + "Kč):\t"
+                            + orders.getOrderedTime() + "-"
+                            + orders.getFulfilmentTime() + "\t"
+                            + (isPaidString(orders)));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Soubor "+fileName+" nebyl nalezen!\n"
+                    + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("Chyba výstupu při zápisu do souboru: "+fileName
+                    +":\n"+ e.getLocalizedMessage());
+        }
+
+    }
+
+
 
 
 
